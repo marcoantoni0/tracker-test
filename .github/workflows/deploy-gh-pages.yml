@@ -32,14 +32,19 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+      - name: Build
+        run: yarn build
+
+#      - name: Build with Jekyll
+#        uses: actions/jekyll-build-pages@v1
+#        with:
+#          source: ./
+#          destination: ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist/'
 
   deploy:
     environment:
